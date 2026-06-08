@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Sandra &amp; Faustino · Boda · 1 Agosto 2026</title>
+<meta name="description" content="Invitación de boda de Sandra Iveth Morán Patiño y Faustino García Trillo · 1 de agosto de 2026 · Cdad. Nezahualcóyotl">
+<meta property="og:type"        content="website">
+<meta property="og:url"         content="https://boda-faustino-y-sandra.vercel.app/">
+<meta property="og:title"       content="Sandra &amp; Faustino · Boda · 1 Agosto 2026">
+<meta property="og:description" content="Nos casamos el 1 de agosto de 2026 en Cdad. Nezahualcóyotl. ¡Estás invitado!">
+<meta property="og:image"       content="https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/13b32766-d3cc-409b-a3a3-9d9b4a3d975c/1780195010931-0.jpg">
+<meta name="twitter:card"       content="summary_large_image">
+<meta name="twitter:image"      content="https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/13b32766-d3cc-409b-a3a3-9d9b4a3d975c/1780195010931-0.jpg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Raleway',sans-serif;font-weight:500;font-size:16px;
+  color:#f5f0e8;background:#080604;line-height:1.6;overflow-x:hidden;
+}
+:root{
+  --bg:#080604;
+  --bg2:#0f0b07;
+  --gold:#e6c41c;
+  --gold-light:#f0d86e;
+  --gold-dim:#a88e14;
+  --rust:#7d361d;
+  --rust-light:#9e4a26;
+  --text:#f5f0e8;
+  --text-dim:#c8bfb0;
+  --card:#130e07;
+  --card2:#1a1208;
+  --border:rgba(230,196,28,.18);
+}
+
+/* ── PARTÍCULAS DORADAS ── */
+#particles{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;}
+.pt{
+  position:absolute;border-radius:50%;pointer-events:none;
+  background:var(--gold);opacity:0;
+}
+
+/* ── WRAP ── */
+.wrap{max-width:430px;margin:0 auto;background:var(--bg);position:relative;overflow:clip;z-index:1;}
+
+/* ── HERO ── */
+.hero{position:relative;width:100%;min-height:100dvh;display:flex;flex-direction:column;background:#050300;}
+.hero-bg{
+  position:absolute;inset:0;
+  background:url('https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/13b32766-d3cc-409b-a3a3-9d9b4a3d975c/1780195010931-0.jpg') center center/cover no-repeat;
+}
+.hero-veil{
+  position:absolute;inset:0;
+  background:linear-gradient(
+    to bottom,
+    rgba(8,6,4,.10) 0%,
+    rgba(8,6,4,.05) 25%,
+    rgba(8,6,4,.35) 55%,
+    rgba(8,6,4,.82) 78%,
+    #080604 100%
+  );
+}
+.hero-top{
+  position:relative;z-index:3;padding:20px 24px 0;display:flex;justify-content:center;
+}
+.hero-monogram{
+  font-family:'Great Vibes',cursive;font-size:36px;color:var(--gold);
+  opacity:0;transform:translateY(-12px);
+  text-shadow:0 0 30px rgba(230,196,28,.5);
+}
+.hero-bottom{position:relative;z-index:3;margin-top:auto;padding:0 28px 64px;text-align:center;}
+.hero-eyebrow{
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:13px;letter-spacing:5px;text-transform:uppercase;
+  color:var(--gold-light);margin-bottom:10px;opacity:0;
+}
+.hero-names{
+  font-family:'Great Vibes',cursive;font-size:60px;line-height:1.05;
+  color:#FFFFFF;margin-bottom:16px;
+  text-shadow:0 4px 40px rgba(230,196,28,.3);
+  opacity:0;transform:translateY(30px);
+}
+.hero-amp{
+  font-family:'Cormorant Garamond',serif;font-size:24px;font-style:italic;
+  color:var(--gold);display:block;letter-spacing:4px;margin:4px 0;
+}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:14px;padding:10px 26px;
+  border:1px solid rgba(230,196,28,.4);border-radius:50px;
+  background:rgba(8,6,4,.45);backdrop-filter:blur(6px);
+  opacity:0;transform:translateY(16px);
+}
+.hero-badge span{
+  font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:4px;
+  text-transform:uppercase;color:var(--gold-light);font-weight:600;
+}
+.hero-badge .sep{color:rgba(230,196,28,.4);font-size:18px;}
+
+/* ── MÚSICA ── */
+#music-btn{
+  position:fixed;bottom:20px;right:20px;z-index:999;
+  width:48px;height:48px;border-radius:50%;
+  background:var(--gold);border:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 20px rgba(230,196,28,.5);
+  transition:transform .2s,background .2s;
+}
+#music-btn:hover{transform:scale(1.1);}
+#music-btn svg{width:22px;height:22px;fill:#080604;}
+
+/* ── DIVISOR DORADO ── */
+.divider{display:flex;align-items:center;gap:12px;padding:8px 0;justify-content:center;}
+.divider-line{flex:1;max-width:60px;height:1px;background:linear-gradient(90deg,transparent,var(--gold-dim));}
+.divider-line.rev{background:linear-gradient(90deg,var(--gold-dim),transparent);}
+.divider-icon{color:var(--gold);font-size:18px;line-height:1;}
+
+/* ── SECCIÓN BASE ── */
+section{padding:64px 28px;position:relative;}
+section:nth-child(even){background:var(--bg2);}
+.sec-eyebrow{
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:13px;letter-spacing:5px;text-transform:uppercase;
+  color:var(--gold-dim);margin-bottom:6px;display:block;text-align:center;
+}
+.sec-title{
+  font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:700;
+  color:var(--text);text-align:center;margin-bottom:28px;line-height:1.2;
+}
+
+/* ── MENSAJE ── */
+.mensaje-card{
+  background:var(--card2);border:1px solid var(--border);border-radius:16px;
+  padding:28px 24px;text-align:center;position:relative;overflow:hidden;
+}
+.mensaje-card::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(230,196,28,.06) 0%,transparent 50%);
+  pointer-events:none;
+}
+.mensaje-quote{
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:20px;line-height:1.7;color:var(--text);font-weight:600;
+  margin-bottom:0;
+}
+.mensaje-firma{
+  font-family:'Great Vibes',cursive;font-size:28px;color:var(--gold);
+  margin-top:16px;display:block;
+}
+
+/* ── FAMILIA ── */
+.familia-block{margin-bottom:36px;}
+.familia-label{
+  font-size:11px;letter-spacing:4px;text-transform:uppercase;
+  color:var(--gold-dim);font-weight:700;text-align:center;margin-bottom:16px;
+}
+.familia-grid{display:grid;gap:12px;}
+.familia-card{
+  background:var(--card);border:1px solid var(--border);border-radius:12px;
+  padding:16px 20px;text-align:center;
+}
+.familia-role{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold-dim);margin-bottom:4px;font-weight:600;}
+.familia-name{font-size:17px;color:var(--text);font-weight:600;line-height:1.4;}
+.familia-sep{border:none;border-top:1px solid var(--border);margin:28px 0;}
+
+.padrinos-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.padrino-card{
+  background:var(--card);border:1px solid var(--border);border-radius:10px;
+  padding:14px 12px;text-align:center;
+}
+.padrino-name{font-size:14px;color:var(--text);font-weight:600;line-height:1.4;}
+.padrino-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold-dim);margin-bottom:4px;font-weight:600;}
+
+/* ── ITINERARIO ── */
+.timeline{position:relative;padding-left:20px;}
+.timeline::before{
+  content:'';position:absolute;left:0;top:0;bottom:0;
+  width:1px;background:linear-gradient(to bottom,transparent,var(--gold-dim) 15%,var(--gold-dim) 85%,transparent);
+}
+.timeline-item{
+  position:relative;padding:0 0 32px 28px;
+}
+.timeline-item:last-child{padding-bottom:0;}
+.timeline-dot{
+  position:absolute;left:-6px;top:4px;
+  width:13px;height:13px;border-radius:50%;
+  background:var(--gold);
+  box-shadow:0 0 12px rgba(230,196,28,.6);
+}
+.timeline-time{
+  font-family:'Cormorant Garamond',serif;font-size:13px;font-weight:600;
+  letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:3px;
+}
+.timeline-event{font-size:18px;font-weight:600;color:var(--text);margin-bottom:2px;}
+.timeline-sub{font-size:14px;color:var(--text-dim);font-weight:500;}
+
+/* ── GALERÍA ── */
+.galeria-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.galeria-grid .tall{grid-row:span 2;}
+.galeria-img{
+  width:100%;aspect-ratio:1;object-fit:cover;border-radius:10px;
+  display:block;transition:transform .3s;
+}
+.galeria-img.tall{aspect-ratio:auto;height:100%;}
+.galeria-img:hover{transform:scale(1.02);}
+
+/* ── UBICACIÓN ── */
+.location-card{
+  background:var(--card2);border:1px solid var(--border);border-radius:16px;
+  overflow:hidden;
+}
+.location-map{
+  width:100%;height:220px;object-fit:cover;display:block;
+  background:var(--card);
+}
+.location-body{padding:20px 20px 24px;}
+.location-name{font-size:20px;font-weight:700;color:var(--text);margin-bottom:6px;}
+.location-addr{font-size:14px;color:var(--text-dim);margin-bottom:16px;line-height:1.5;font-weight:500;}
+.btn-maps{
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  width:100%;padding:14px;border-radius:10px;
+  background:var(--gold);color:#080604;
+  font-family:'Raleway',sans-serif;font-size:15px;font-weight:700;
+  letter-spacing:1px;text-decoration:none;text-transform:uppercase;
+  transition:background .2s,transform .15s;
+}
+.btn-maps:hover{background:var(--gold-light);transform:translateY(-1px);}
+.btn-maps svg{width:18px;height:18px;fill:#080604;}
+
+/* ── VESTIMENTA ── */
+.vestimenta-card{
+  background:var(--card2);border:1px solid var(--border);border-radius:16px;
+  overflow:hidden;
+}
+.vestimenta-img{width:100%;display:block;max-height:280px;object-fit:cover;object-position:top;}
+.vestimenta-body{padding:20px 20px 24px;}
+.vestimenta-label{font-size:13px;letter-spacing:3px;text-transform:uppercase;color:var(--gold-dim);font-weight:700;margin-bottom:10px;display:block;}
+.vestimenta-tipo{font-size:22px;font-weight:700;color:var(--text);margin-bottom:16px;}
+.vestimenta-evitar{
+  display:flex;align-items:center;gap:10px;
+  background:rgba(125,54,29,.15);border:1px solid rgba(125,54,29,.35);
+  border-radius:8px;padding:12px 14px;
+}
+.color-swatch{width:28px;height:28px;border-radius:50%;border:2px solid rgba(255,255,255,.15);flex-shrink:0;}
+.vestimenta-evitar-text{font-size:14px;color:var(--text-dim);font-weight:500;}
+
+/* ── REGALOS ── */
+.sobres-card{
+  background:var(--card2);border:1px solid var(--border);border-radius:16px;
+  padding:28px 24px;text-align:center;
+}
+.sobres-icon{font-size:48px;margin-bottom:12px;display:block;}
+.sobres-title{font-size:22px;font-weight:700;color:var(--text);margin-bottom:8px;}
+.sobres-text{font-size:16px;color:var(--text-dim);line-height:1.6;font-weight:500;}
+
+/* ── RSVP ── */
+.rsvp-card{
+  background:linear-gradient(135deg,var(--card2),rgba(125,54,29,.15));
+  border:1px solid var(--border);border-radius:20px;
+  padding:36px 28px;text-align:center;
+  box-shadow:0 0 60px rgba(230,196,28,.08);
+}
+.rsvp-monogram{
+  font-family:'Great Vibes',cursive;font-size:52px;color:var(--gold);
+  margin-bottom:12px;text-shadow:0 0 30px rgba(230,196,28,.3);
+}
+.rsvp-title{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:700;color:var(--text);margin-bottom:8px;}
+.rsvp-sub{font-size:15px;color:var(--text-dim);margin-bottom:6px;font-weight:500;}
+.rsvp-deadline{
+  font-size:13px;color:var(--gold-dim);letter-spacing:2px;text-transform:uppercase;
+  font-weight:700;margin-bottom:24px;display:block;
+}
+.btn-rsvp{
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  width:100%;padding:16px;border-radius:50px;
+  background:linear-gradient(135deg,#25d366,#128c7e);
+  color:#ffffff;font-family:'Raleway',sans-serif;
+  font-size:16px;font-weight:700;letter-spacing:.5px;
+  text-decoration:none;cursor:pointer;border:none;
+  transition:transform .15s,box-shadow .15s;
+  box-shadow:0 6px 24px rgba(37,211,102,.3);
+}
+.btn-rsvp:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(37,211,102,.4);}
+.btn-rsvp svg{width:22px;height:22px;fill:#fff;}
+
+/* ── FOOTER ── */
+footer{
+  padding:40px 28px 56px;text-align:center;
+  background:var(--bg);
+}
+.footer-monogram{font-family:'Great Vibes',cursive;font-size:44px;color:var(--gold);margin-bottom:8px;}
+.footer-date{font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:4px;color:var(--gold-dim);text-transform:uppercase;margin-bottom:20px;font-weight:600;}
+.footer-credit{font-size:12px;color:rgba(245,240,232,.25);font-weight:500;}
+
+/* ── FADE IN ── */
+.reveal{opacity:0;transform:translateY(28px);}
+
+@media(max-width:380px){
+  .hero-names{font-size:50px;}
+  .padrinos-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- AUDIO -->
+<audio id="bg-music" src="https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/audio/boda-faustino-y-sandra/cancion.mp3" preload="none" loop></audio>
+
+<!-- PARTÍCULAS -->
+<div id="particles"></div>
+
+<!-- BOTÓN MÚSICA -->
+<button id="music-btn" aria-label="Reproducir música">
+  <svg id="icon-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+  <svg id="icon-pause" viewBox="0 0 24 24" style="display:none"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+</button>
+
+<div class="wrap">
+
+  <!-- ═══ HERO ═══ -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-veil"></div>
+    <div class="hero-top">
+      <div class="hero-monogram">F &amp; S</div>
+    </div>
+    <div class="hero-bottom">
+      <p class="hero-eyebrow">¡Estás Invitado!</p>
+      <h1 class="hero-names">
+        Sandra<span class="hero-amp">&amp;</span>Faustino
+      </h1>
+      <div class="hero-badge">
+        <span>1 Agosto</span>
+        <span class="sep">·</span>
+        <span>2026</span>
+        <span class="sep">·</span>
+        <span>Neza</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ MENSAJE ═══ -->
+  <section>
+    <div class="divider reveal">
+      <div class="divider-line"></div>
+      <div class="divider-icon">✦</div>
+      <div class="divider-line rev"></div>
+    </div>
+    <br>
+    <div class="mensaje-card reveal">
+      <p class="mensaje-quote">
+        "Tu cariño, amistad y buenas vibras hacen que este día sea aún más especial.<br>
+        ¡Esperamos contar con tu asistencia!"
+      </p>
+      <span class="mensaje-firma">Sandra &amp; Faustino</span>
+    </div>
+  </section>
+
+  <!-- ═══ FAMILIA ═══ -->
+  <section>
+    <span class="sec-eyebrow reveal">Con la bendición de</span>
+    <h2 class="sec-title reveal">Nuestras Familias</h2>
+
+    <div class="familia-block reveal">
+      <p class="familia-label">Padres del Novio</p>
+      <div class="familia-grid" style="grid-template-columns:1fr 1fr;">
+        <div class="familia-card">
+          <p class="familia-role">Padre</p>
+          <p class="familia-name">Faustino García Saenz</p>
+        </div>
+        <div class="familia-card">
+          <p class="familia-role">Madre</p>
+          <p class="familia-name">Sofia Trillo Sandoval</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="familia-block reveal">
+      <p class="familia-label">Padres de la Novia</p>
+      <div class="familia-grid" style="grid-template-columns:1fr 1fr;">
+        <div class="familia-card">
+          <p class="familia-role">Padre</p>
+          <p class="familia-name">Floriberto Morán García</p>
+        </div>
+        <div class="familia-card">
+          <p class="familia-role">Madre</p>
+          <p class="familia-name">Marina Morán García</p>
+        </div>
+      </div>
+    </div>
+
+    <hr class="familia-sep reveal">
+
+    <div class="reveal">
+      <p class="familia-label" style="margin-bottom:16px;">Padrinos</p>
+      <div class="padrinos-grid">
+        <div class="padrino-card">
+          <p class="padrino-label">Padrino</p>
+          <p class="padrino-name">Heriberto Dominguez</p>
+        </div>
+        <div class="padrino-card">
+          <p class="padrino-label">Madrina</p>
+          <p class="padrino-name">Lucila Sanchez Nuñez</p>
+        </div>
+        <div class="padrino-card">
+          <p class="padrino-label">Padrino</p>
+          <p class="padrino-name">Alejandro Leyva Soberano</p>
+        </div>
+        <div class="padrino-card">
+          <p class="padrino-label">Madrina</p>
+          <p class="padrino-name">Rosalia Morán García</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ ITINERARIO ═══ -->
+  <section>
+    <span class="sec-eyebrow reveal">El Gran Día</span>
+    <h2 class="sec-title reveal">Programa</h2>
+
+    <div class="timeline">
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <p class="timeline-time">6:30 PM</p>
+        <p class="timeline-event">Recepción</p>
+        <p class="timeline-sub">Llegada de los invitados</p>
+      </div>
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <p class="timeline-time">Aperitivos</p>
+        <p class="timeline-event">Cóctel de Bienvenida</p>
+        <p class="timeline-sub">Disfruta mientras esperamos</p>
+      </div>
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <p class="timeline-time">7:30 PM</p>
+        <p class="timeline-event">Ceremonia Civil</p>
+        <p class="timeline-sub">El momento más especial</p>
+      </div>
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <p class="timeline-time">8:00 PM</p>
+        <p class="timeline-event">Toma de Fotografías</p>
+        <p class="timeline-sub">Recuerdos para siempre</p>
+      </div>
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <p class="timeline-time">8:30 PM</p>
+        <p class="timeline-event">Cena</p>
+        <p class="timeline-sub">Disfruta del banquete</p>
+      </div>
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <p class="timeline-time">9:30 PM</p>
+        <p class="timeline-event">Inicio del Baile</p>
+        <p class="timeline-sub">¡A celebrar!</p>
+      </div>
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <p class="timeline-time">10:30 PM</p>
+        <p class="timeline-event">Sorpresa</p>
+        <p class="timeline-sub">¡No te la puedes perder!</p>
+      </div>
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <p class="timeline-time">1:30 AM</p>
+        <p class="timeline-event">Menú Desvelados</p>
+        <p class="timeline-sub">Para los que aguantan</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ GALERÍA ═══ -->
+  <section>
+    <span class="sec-eyebrow reveal">Nuestra Historia</span>
+    <h2 class="sec-title reveal">Galería</h2>
+
+    <div class="galeria-grid reveal">
+      <div class="tall">
+        <img class="galeria-img tall"
+          src="https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/13b32766-d3cc-409b-a3a3-9d9b4a3d975c/1780195010931-0.jpg"
+          alt="Sandra y Faustino" loading="lazy">
+      </div>
+      <img class="galeria-img"
+        src="https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/13b32766-d3cc-409b-a3a3-9d9b4a3d975c/1780195099868-0.jpg"
+        alt="Sandra y Faustino" loading="lazy">
+      <img class="galeria-img"
+        src="https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/13b32766-d3cc-409b-a3a3-9d9b4a3d975c/1780198640386-0.jpg"
+        alt="Sandra y Faustino" loading="lazy">
+      <img class="galeria-img"
+        src="https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/13b32766-d3cc-409b-a3a3-9d9b4a3d975c/1780198649055-0.jpg"
+        alt="Sandra y Faustino" loading="lazy">
+      <img class="galeria-img"
+        src="https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/13b32766-d3cc-409b-a3a3-9d9b4a3d975c/1780198661843-0.jpg"
+        alt="Sandra y Faustino" loading="lazy">
+      <img class="galeria-img"
+        src="https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/13b32766-d3cc-409b-a3a3-9d9b4a3d975c/1780198667705-0.jpg"
+        alt="Sandra y Faustino" loading="lazy">
+    </div>
+  </section>
+
+  <!-- ═══ UBICACIÓN ═══ -->
+  <section>
+    <span class="sec-eyebrow reveal">Nos vemos aquí</span>
+    <h2 class="sec-title reveal">Lugar del Evento</h2>
+
+    <div class="location-card reveal">
+      <iframe
+        class="location-map"
+        title="Centro Contemporáneo De Artes"
+        loading="lazy"
+        allowfullscreen
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3764.0!2d-99.0306306!3d19.4197007!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1fdb4793af6fb%3A0x9247eafaa8b519a!2sCentro+Contempor%C3%A1neo+De+artes!5e0!3m2!1ses!2smx!4v1">
+      </iframe>
+      <div class="location-body">
+        <p class="location-name">Centro Contemporáneo De Artes</p>
+        <p class="location-addr">C. Virgen del Socorro 113, Virgencitas,<br>57300 Cdad. Nezahualcóyotl, Méx.</p>
+        <a class="btn-maps"
+          href="https://www.google.com/maps/place/Centro+Contempor%C3%A1neo+De+artes/@19.4197007,-99.0306306,17z"
+          target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          Cómo llegar
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ VESTIMENTA ═══ -->
+  <section>
+    <span class="sec-eyebrow reveal">Dress Code</span>
+    <h2 class="sec-title reveal">Código de Vestimenta</h2>
+
+    <div class="vestimenta-card reveal">
+      <img class="vestimenta-img"
+        src="https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/13b32766-d3cc-409b-a3a3-9d9b4a3d975c/codigo-vestimenta-1780262614035.jpg"
+        alt="Código de vestimenta" loading="lazy">
+      <div class="vestimenta-body">
+        <span class="vestimenta-label">Código de Vestimenta</span>
+        <p class="vestimenta-tipo">Formal</p>
+        <div class="vestimenta-evitar">
+          <div class="color-swatch" style="background:#FFFFFF;"></div>
+          <p class="vestimenta-evitar-text"><strong>Evitar:</strong> Color blanco — ese color es exclusivo de la novia.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ MESA DE REGALOS ═══ -->
+  <section>
+    <span class="sec-eyebrow reveal">Mesa de Regalos</span>
+    <h2 class="sec-title reveal">Tu Presencia es el Mejor Regalo</h2>
+
+    <div class="sobres-card reveal">
+      <span class="sobres-icon">💌</span>
+      <p class="sobres-title">Lluvia de Sobres</p>
+      <p class="sobres-text">
+        Si deseas hacernos un obsequio, una aportación a nuestra nueva vida juntos será muy bienvenida y muy apreciada.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══ RSVP ═══ -->
+  <section>
+    <div class="rsvp-card reveal">
+      <div class="rsvp-monogram">F &amp; S</div>
+      <h2 class="rsvp-title">Confirma tu Asistencia</h2>
+      <p class="rsvp-sub">Cuéntanos que estarás con nosotros</p>
+      <span class="rsvp-deadline">Antes del 12 de julio de 2026</span>
+      <button class="btn-rsvp" onclick="confirmarAsistencia()">
+        <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
+        Confirmar por WhatsApp
+      </button>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer>
+    <div class="divider">
+      <div class="divider-line"></div>
+      <div class="divider-icon">✦</div>
+      <div class="divider-line rev"></div>
+    </div>
+    <br>
+    <p class="footer-monogram">F &amp; S</p>
+    <p class="footer-date">1 · Agosto · 2026</p>
+    <p class="footer-credit">Creado con amor · @elysium.invitaciones</p>
+  </footer>
+
+</div><!-- /wrap -->
+
+<script>
+/* ── PARTÍCULAS ── */
+const ptContainer = document.getElementById('particles');
+const PT_COUNT = 28;
+for(let i = 0; i < PT_COUNT; i++){
+  const pt = document.createElement('div');
+  pt.className = 'pt';
+  const size = Math.random() * 4 + 2;
+  pt.style.cssText = `width:${size}px;height:${size}px;left:${Math.random()*100}%;top:${Math.random()*100}%;`;
+  ptContainer.appendChild(pt);
+}
+gsap.set('.pt',{opacity:0});
+document.querySelectorAll('.pt').forEach((pt, i) => {
+  gsap.to(pt, {
+    opacity: Math.random() * 0.6 + 0.1,
+    y: -(Math.random() * 300 + 100),
+    x: (Math.random() - 0.5) * 80,
+    duration: Math.random() * 6 + 5,
+    repeat: -1,
+    delay: Math.random() * 8,
+    ease: 'none',
+    yoyo: false,
+    onRepeat: function() {
+      gsap.set(pt, {y: 0, opacity: 0, left: Math.random()*100+'%'});
+    }
+  });
+});
+
+/* ── HERO ENTRADA ── */
+gsap.timeline({delay:.3})
+  .to('.hero-monogram', {opacity:1, y:0, duration:.8, ease:'power2.out'})
+  .to('.hero-eyebrow',  {opacity:1, duration:.6, ease:'power2.out'}, '-=.3')
+  .to('.hero-names',    {opacity:1, y:0, duration:.9, ease:'power2.out'}, '-=.3')
+  .to('.hero-badge',    {opacity:1, y:0, duration:.7, ease:'power2.out'}, '-=.4');
+
+/* ── REVEAL ON SCROLL ── */
+gsap.registerPlugin(ScrollTrigger);
+document.querySelectorAll('.reveal').forEach(el => {
+  gsap.to(el, {
+    opacity:1, y:0, duration:.8, ease:'power2.out',
+    scrollTrigger: { trigger:el, start:'top 88%', once:true }
+  });
+});
+
+/* ── MÚSICA ── */
+const audio = document.getElementById('bg-music');
+const btn   = document.getElementById('music-btn');
+const iPlay  = document.getElementById('icon-play');
+const iPause = document.getElementById('icon-pause');
+let playing = false;
+
+btn.addEventListener('click', () => {
+  if(!playing){
+    audio.play().then(()=>{ playing=true; iPlay.style.display='none'; iPause.style.display=''; });
+  } else {
+    audio.pause(); playing=false; iPlay.style.display=''; iPause.style.display='none';
+  }
+});
+
+/* ── RSVP ── */
+function confirmarAsistencia(){
+  const msg = encodeURIComponent('¡Hola! Con mucho gusto confirmo mi asistencia a la celebración de Sandra Iveth Morán Patiño y Faustino García Trillo. 🎉\n¡Nos vemos pronto! 💫');
+  // Número de WhatsApp pendiente — cuando lo proporcione el cliente, reemplazar 521XXXXXXXXXX
+  window.open('https://wa.me/521XXXXXXXXXX?text='+msg, '_blank');
+}
+</script>
+</body>
+</html>
