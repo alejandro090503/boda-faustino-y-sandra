@@ -551,7 +551,7 @@ section{padding:64px 22px}
 .fam-sep{display:block;font-family:'Great Vibes',cursive;font-size:26px;color:var(--peach);line-height:1;margin:6px 0;}
 .sdiv{height:36px}
 
-/* ── GALLERY ──────────────────────────────────────────── */
+/* ── GALLERY — RUEDA 3D ───────────────────────────────── */
 #gallery{background:#fff;padding:84px 0 96px;position:relative;overflow:hidden;}
 #gallery > .lbl,
 #gallery > .ttl,
@@ -559,58 +559,63 @@ section{padding:64px 22px}
 #gallery > .gal-sub{padding-left:22px;padding-right:22px}
 .gal-sub{text-align:center;font-size:14px;color:var(--cream);opacity:.65;line-height:1.85;margin:12px 0 0;letter-spacing:.5px;font-weight:500;}
 .gal-sub em{font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--peach);font-style:italic;}
-.drop-stage{position:relative;height:380px;margin-top:28px;overflow:visible;}
-.drop-photo{
-  position:absolute;width:112px;height:150px;background:#fff;
-  border-radius:3px;padding:7px 7px 30px;
-  box-shadow:0 8px 30px rgba(56,87,26,.12);
-  left:50%;opacity:0;will-change:transform,opacity;cursor:pointer;transition:box-shadow .3s;
+/* Rueda 3D */
+.wheel-scene{
+  position:relative;
+  width:100%;
+  height:560px;
+  margin:40px auto 0;
+  perspective:1600px;
+  transform-style:preserve-3d;
+  overflow:visible;
 }
-.drop-photo img{width:100%;height:100%;object-fit:cover;object-position:center top;border-radius:2px;display:block;pointer-events:none;}
-.drop-photo-label{
-  position:absolute;bottom:7px;left:0;right:0;
-  font-family:'Cormorant Garamond',serif;font-style:italic;
-  font-size:9px;letter-spacing:2px;text-transform:uppercase;
-  color:var(--peach);text-align:center;opacity:.65;font-weight:500;
+.wheel-ring{
+  position:absolute;
+  width:100%;height:100%;
+  transform-style:preserve-3d;
+  cursor:grab;
 }
-.drop-photo-1{margin-left:-160px;top:8px}
-.drop-photo-2{margin-left:-56px;top:115px}
-.drop-photo-3{margin-left:48px;top:4px}
-.drop-photo-4{margin-left:-160px;top:210px}
-.drop-photo-5{margin-left:48px;top:200px}
-.drop-photo.focused{z-index:10!important}
-.drop-hint{
-  font-family:'Cormorant Garamond',serif;font-style:italic;
-  font-size:14px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;
-  color:var(--peach);opacity:.6;margin-top:14px;display:block;padding:0 28px;text-align:center;
+.wheel-ring.dragging{cursor:grabbing}
+.wheel-card{
+  position:absolute;
+  width:190px;height:265px;
+  left:50%;top:50%;
+  margin-left:-95px;margin-top:-132px;
+  border-radius:16px;
+  overflow:hidden;
+  border:1.5px solid rgba(230,196,28,.45);
+  box-shadow:0 12px 40px rgba(0,0,0,.22);
+  user-select:none;
+  -webkit-user-select:none;
+  cursor:zoom-in;
+}
+.wheel-card img{
+  width:100%;height:100%;
+  object-fit:cover;object-position:center;
+  display:block;
+  pointer-events:none;
+  filter:saturate(.95) contrast(1.03);
+}
+.wheel-card:hover{
+  box-shadow:0 14px 50px rgba(230,196,28,.3),0 4px 12px rgba(0,0,0,.15);
+}
+.gal-hint{
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;
+  font-size:13px;
+  letter-spacing:.3em;
+  color:var(--peach);
+  margin-top:28px;
+  opacity:.7;
+  text-transform:uppercase;
+  text-align:center;display:block;padding:0 22px;
 }
 /* ── LIGHTBOX ─────────────────────────────────────────── */
-#galLightbox{
-  position:fixed;inset:0;z-index:9500;
-  display:flex;align-items:center;justify-content:center;
-  background:rgba(0,0,0,0);pointer-events:none;
-  transition:background .35s ease;
-}
-#galLightbox.open{background:rgba(0,0,0,.84);pointer-events:all;}
-#galLightboxImg{
-  max-width:88vw;max-height:80vh;border-radius:6px;
-  box-shadow:0 28px 90px rgba(0,0,0,.55);
-  object-fit:contain;display:block;
-  transform:scale(.65);opacity:0;
-  transition:transform .38s cubic-bezier(.34,1.56,.64,1),opacity .3s ease;
-}
-#galLightbox.open #galLightboxImg{transform:scale(1);opacity:1;}
-#galLbClose{
-  position:absolute;top:22px;right:22px;
-  width:38px;height:38px;border-radius:50%;
-  background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);
-  color:#fff;font-size:20px;line-height:1;
-  display:flex;align-items:center;justify-content:center;
-  cursor:pointer;transition:background .2s;
-  opacity:0;pointer-events:none;
-}
-#galLightbox.open #galLbClose{opacity:1;pointer-events:all;}
-#galLbClose:hover{background:rgba(255,255,255,.22);}
+#lightbox{position:fixed;inset:0;z-index:9990;display:none;align-items:center;justify-content:center;padding:clamp(16px,4vw,48px);background:rgba(8,12,24,.84);backdrop-filter:blur(18px) saturate(1.15);-webkit-backdrop-filter:blur(18px) saturate(1.15);opacity:0;cursor:zoom-out;}
+#lightbox.is-open{display:flex;}
+#lightbox-img{max-width:min(94vw,1400px);max-height:min(86vh,1000px);width:auto;height:auto;object-fit:contain;border-radius:14px;box-shadow:0 28px 90px rgba(0,0,0,.6),0 0 0 1px rgba(230,196,28,.2);opacity:0;transform:scale(.88);}
+#lightbox-close{position:absolute;top:clamp(16px,3vw,32px);right:clamp(16px,3vw,32px);width:48px;height:48px;border:1px solid rgba(230,196,28,.45);background:rgba(10,10,5,.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-radius:50%;color:#fff;font-size:26px;line-height:1;font-family:'Lato',sans-serif;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .3s,border-color .3s,transform .3s;}
+#lightbox-close:hover{background:rgba(30,20,5,.8);border-color:rgba(230,196,28,.7);transform:scale(1.08)}
 
 /* ── GIFTS / SOBRE INTERACTIVO ───────────────────────── */
 .gifts-head{text-align:center;margin-bottom:0;max-width:640px;margin-left:auto;margin-right:auto}
@@ -773,9 +778,10 @@ section.has-sec-waves{padding-top:84px;padding-bottom:86px}
 <div id="prog"></div>
 
 <!-- AUDIO -->
-<div id="galLightbox" role="dialog" aria-modal="true" aria-label="Foto ampliada">
-  <button id="galLbClose" aria-label="Cerrar">&#x2715;</button>
-  <img id="galLightboxImg" src="" alt="Foto Sandra y Faustino">
+<!-- LIGHTBOX -->
+<div id="lightbox" role="dialog" aria-modal="true" aria-label="Foto ampliada" aria-hidden="true">
+  <button id="lightbox-close" aria-label="Cerrar">&#x2715;</button>
+  <img id="lightbox-img" src="" alt="">
 </div>
 
 <audio id="bgMusic" loop preload="none">
@@ -1030,30 +1036,16 @@ section.has-sec-waves{padding-top:84px;padding-bottom:86px}
   <div class="gline"></div>
   <p class="gal-sub"><em>Momentos que atesoramos</em></p>
 
-  <div class="drop-stage" id="dropStage">
-    <div class="drop-photo drop-photo-1" id="dropP1">
-      <img src="https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/13b32766-d3cc-409b-a3a3-9d9b4a3d975c/1780195010931-0.jpg" alt="Sandra y Faustino" loading="lazy">
-      <span class="drop-photo-label">Sandra &amp; Faustino</span>
-    </div>
-    <div class="drop-photo drop-photo-2" id="dropP2">
-      <img src="https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/13b32766-d3cc-409b-a3a3-9d9b4a3d975c/1780195099868-0.jpg" alt="Sandra y Faustino" loading="lazy">
-      <span class="drop-photo-label">Nuestra historia</span>
-    </div>
-    <div class="drop-photo drop-photo-3" id="dropP3">
-      <img src="https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/13b32766-d3cc-409b-a3a3-9d9b4a3d975c/1780198649055-0.jpg" alt="Sandra y Faustino" loading="lazy">
-      <span class="drop-photo-label">Juntos siempre</span>
-    </div>
-    <div class="drop-photo drop-photo-4" id="dropP4">
-      <img src="https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/13b32766-d3cc-409b-a3a3-9d9b4a3d975c/1780198661843-0.jpg" alt="Sandra y Faustino" loading="lazy">
-      <span class="drop-photo-label">Para siempre</span>
-    </div>
-    <div class="drop-photo drop-photo-5" id="dropP5">
-      <img src="https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/13b32766-d3cc-409b-a3a3-9d9b4a3d975c/1780198667705-0.jpg" alt="Sandra y Faustino" loading="lazy">
-      <span class="drop-photo-label">Con amor</span>
+  <div class="wheel-scene" id="wheel-scene">
+    <div class="wheel-ring" id="wheel-ring">
+      <div class="wheel-card"><img src="https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/13b32766-d3cc-409b-a3a3-9d9b4a3d975c/1780195010931-0.jpg" alt="Sandra y Faustino" loading="lazy"></div>
+      <div class="wheel-card"><img src="https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/13b32766-d3cc-409b-a3a3-9d9b4a3d975c/1780195099868-0.jpg" alt="Sandra y Faustino" loading="lazy"></div>
+      <div class="wheel-card"><img src="https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/13b32766-d3cc-409b-a3a3-9d9b4a3d975c/1780198649055-0.jpg" alt="Sandra y Faustino" loading="lazy"></div>
+      <div class="wheel-card"><img src="https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/13b32766-d3cc-409b-a3a3-9d9b4a3d975c/1780198661843-0.jpg" alt="Sandra y Faustino" loading="lazy"></div>
+      <div class="wheel-card"><img src="https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/13b32766-d3cc-409b-a3a3-9d9b4a3d975c/1780198667705-0.jpg" alt="Sandra y Faustino" loading="lazy"></div>
     </div>
   </div>
-
-  <span class="drop-hint" id="dropHint">Toca cada foto para expandirla</span>
+  <span class="gal-hint">Arrastra para girar · Toca para ampliar</span>
 </section>
 
 
@@ -1347,8 +1339,8 @@ document.addEventListener('DOMContentLoaded', () => {
     heroAnim();
     initGlobalParticles();
     scrollAnims();
-    countdown();
-    setInterval(countdown, 1000);
+    // countdown ya corre globalmente; sólo refrescamos por si los ids no existían antes
+    if(typeof countdown === 'function') countdown();
     const aud2 = document.getElementById('bgMusic');
     if (aud2) { aud2.play().then(() => { document.getElementById('musicBtn')?.classList.add('on'); }).catch(()=>{}); }
   }
@@ -1377,7 +1369,6 @@ document.addEventListener('DOMContentLoaded', () => {
           loaderEl.remove();
           initInvitation();
           ambientWind();
-          initGallery();
         }
       });
     }
@@ -1530,6 +1521,10 @@ function countdown() {
     prevS = ns;
   }
 }
+
+// Arrancar cuenta regresiva inmediatamente (no esperar al loader)
+countdown();
+setInterval(countdown, 1000);
 
 /* ── MUSIC ───────────────────────────────────────────── */
 const aud = document.getElementById('bgMusic');
@@ -1712,54 +1707,111 @@ function ambientWind() {
   for (let i = 0; i < 8; i++) setTimeout(spawn, i * 900);
 }
 
-/* ── GALLERY · FOTOS QUE CAEN ───────────────────────── */
-function initGallery() {
-  const finalRotations = [-6, 3, -5, 4, -3];
-  const photos = [
-    { el: document.getElementById('dropP1'), rot: finalRotations[0] },
-    { el: document.getElementById('dropP2'), rot: finalRotations[1] },
-    { el: document.getElementById('dropP3'), rot: finalRotations[2] },
-    { el: document.getElementById('dropP4'), rot: finalRotations[3] },
-    { el: document.getElementById('dropP5'), rot: finalRotations[4] },
-  ].filter(p => p.el);
+/* ── GALLERY — RUEDA 3D con inercia ──────────────────── */
+(function initWheel(){
+  var cards  = document.querySelectorAll('.wheel-card');
+  var ring   = document.getElementById('wheel-ring');
+  if (!ring || cards.length === 0) return;
 
-  ScrollTrigger.create({
-    trigger: '#dropStage', start: 'top 75%', once: true,
-    onEnter() {
-      photos.forEach((p, i) => {
-        gsap.set(p.el, {
-          y: -(window.innerHeight * 0.75 + 200),
-          rotation: p.rot + (i % 2 === 0 ? 35 : -30),
-          opacity: 1, zIndex: i + 1,
-        });
-        gsap.to(p.el, {
-          y: 0, rotation: p.rot,
-          duration: 1.2 + i * 0.05, ease: 'power2.in', delay: i * 0.6,
-          onComplete() {
-            gsap.to(p.el, { y: -10, rotation: p.rot * 0.6, duration: .15, ease: 'power1.out',
-              onComplete() { gsap.to(p.el, { y: 0, rotation: p.rot, duration: .2, ease: 'power2.inOut' }); }
-            });
-            gsap.to(p.el, { boxShadow: `0 ${28 + i*6}px ${70 + i*10}px rgba(56,87,26,.24)`, duration: .25 });
-          }
-        });
-      });
+  var n       = cards.length;
+  var radius  = 320;
+  var rot     = 0;
+  var vel     = 0;
+  var isDrag  = false;
+  var startX  = 0;
+  var startRot = 0;
+  var lastX   = 0;
+  var rafId   = null;
+
+  cards.forEach(function(card, i){
+    card.style.transform = 'rotateY(' + (360 / n * i) + 'deg) translateZ(' + radius + 'px)';
+  });
+
+  function setRot(r){
+    rot = r;
+    gsap.set(ring, { rotateY: rot });
+  }
+
+  function inertia(){
+    if (Math.abs(vel) < 0.05){ vel = 0; return; }
+    vel *= 0.94;
+    setRot(rot + vel);
+    rafId = requestAnimationFrame(inertia);
+  }
+
+  ring.addEventListener('mousedown', function(e){
+    cancelAnimationFrame(rafId);
+    isDrag = true; vel = 0;
+    startX = e.clientX; startRot = rot; lastX = e.clientX;
+    ring.classList.add('dragging');
+  });
+  window.addEventListener('mousemove', function(e){
+    if (!isDrag) return;
+    var dx = e.clientX - startX;
+    vel = (e.clientX - lastX) * 0.5;
+    lastX = e.clientX;
+    setRot(startRot + dx * 0.45);
+  });
+  window.addEventListener('mouseup', function(){
+    if (!isDrag) return;
+    isDrag = false;
+    ring.classList.remove('dragging');
+    rafId = requestAnimationFrame(inertia);
+  });
+
+  ring.addEventListener('touchstart', function(e){
+    cancelAnimationFrame(rafId);
+    isDrag = true; vel = 0;
+    startX = e.touches[0].clientX; startRot = rot; lastX = startX;
+  }, { passive: true });
+  window.addEventListener('touchmove', function(e){
+    if (!isDrag) return;
+    var dx = e.touches[0].clientX - startX;
+    vel = (e.touches[0].clientX - lastX) * 0.5;
+    lastX = e.touches[0].clientX;
+    setRot(startRot + dx * 0.45);
+  }, { passive: true });
+  window.addEventListener('touchend', function(){
+    if (!isDrag) return;
+    isDrag = false;
+    rafId = requestAnimationFrame(inertia);
+  });
+
+  gsap.fromTo('.wheel-scene',{opacity:0,y:30},{opacity:1,y:0,duration:1.1,ease:'power3.out',
+    scrollTrigger:{trigger:'.wheel-scene', start:'top 82%'}});
+
+  gsap.fromTo('#gallery > .lbl, #gallery > .ttl, #gallery > .gline, #gallery > .gal-sub',
+    {opacity:0, y:18},{opacity:1, y:0, duration:1, stagger:.1,
+     scrollTrigger:{trigger:'#gallery', start:'top 80%'}});
+
+  // Lightbox
+  var lb      = document.getElementById('lightbox');
+  var lbImg   = document.getElementById('lightbox-img');
+  var lbClose = document.getElementById('lightbox-close');
+  if(lb && lbImg){
+    function openLb(src, alt){
+      lbImg.src = src; lbImg.alt = alt || '';
+      lb.setAttribute('aria-hidden','false');
+      lb.classList.add('is-open');
+      gsap.fromTo(lb,   {opacity:0}, {opacity:1, duration:.35, ease:'power2.out'});
+      gsap.fromTo(lbImg,{opacity:0, scale:.88},{opacity:1, scale:1, duration:.45, ease:'back.out(1.4)'});
     }
-  });
-
-  const lb    = document.getElementById('galLightbox');
-  const lbImg = document.getElementById('galLightboxImg');
-  function closeLb() { lb.classList.remove('open'); }
-  lb.addEventListener('click', e => { if (e.target !== lbImg) closeLb(); });
-  document.getElementById('galLbClose').addEventListener('click', closeLb);
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLb(); });
-
-  photos.forEach(p => {
-    p.el.addEventListener('click', () => {
-      lbImg.src = p.el.querySelector('img').src;
-      lb.classList.add('open');
+    function closeLb(){
+      gsap.to(lb,   {opacity:0, duration:.3, ease:'power2.in',
+        onComplete:function(){ lb.classList.remove('is-open'); lb.setAttribute('aria-hidden','true'); lbImg.src=''; }});
+      gsap.to(lbImg,{opacity:0, scale:.88, duration:.28, ease:'power2.in'});
+    }
+    cards.forEach(function(card){
+      card.addEventListener('click', function(){
+        var img = card.querySelector('img');
+        if(img) openLb(img.src, img.alt);
+      });
     });
-  });
-}
+    if(lbClose) lbClose.addEventListener('click', closeLb);
+    lb.addEventListener('click', function(e){ if(e.target === lb) closeLb(); });
+    document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && lb.classList.contains('is-open')) closeLb(); });
+  }
+})();
 </script>
 </body>
 </html>
