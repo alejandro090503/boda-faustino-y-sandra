@@ -520,6 +520,48 @@ section{padding:64px 22px}
 #album{background:var(--ink)}
 .alb-sub{text-align:center;font-size:16px;color:var(--cream);opacity:.7;line-height:1.9;margin:14px 0 28px;font-weight:500;}
 
+/* ── FOTO BAND ───────────────────────────────────────── */
+.foto-band{
+  position:relative;width:100%;
+  height:clamp(380px,70vw,600px);
+  overflow:hidden;
+}
+.foto-band img{
+  width:100%;height:100%;
+  object-fit:cover;
+  object-position:center 30%;
+  display:block;
+  filter:brightness(.88) contrast(1.06);
+  transition:transform 6s var(--smooth);
+}
+.foto-band.is-visible img{transform:scale(1.06)}
+.foto-band::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(to bottom,
+    var(--fb-from,#FEFBF5) 0%,transparent 16%,
+    transparent 84%,var(--fb-to,#FEFBF5) 100%);
+  pointer-events:none;
+}
+.foto-band .foto-band-overlay{
+  position:absolute;inset:0;
+  background:rgba(125,54,29,.12);
+  mix-blend-mode:multiply;
+  pointer-events:none;
+}
+.foto-band .foto-band-caption{
+  position:absolute;bottom:0;left:0;right:0;
+  text-align:center;padding:28px 20px 22px;
+  font-family:'Great Vibes',cursive;
+  font-size:clamp(22px,4vw,32px);
+  color:var(--peach);
+  letter-spacing:.02em;
+  text-shadow:0 2px 12px rgba(0,0,0,.6);
+  z-index:2;opacity:0;
+  transform:translateY(12px);
+  transition:opacity .8s .3s,transform .8s .3s;
+}
+.foto-band.is-visible .foto-band-caption{opacity:1;transform:translateY(0)}
+
 /* ── FAMILY ───────────────────────────────────────────── */
 #family{position:relative;overflow:hidden;}
 .fam-bg{
@@ -890,6 +932,13 @@ section.has-sec-waves{padding-top:84px;padding-bottom:86px}
 </section>
 
 
+<!-- FOTO BAND 1 -->
+<div class="foto-band" style="--fb-from:#FEFBF5;--fb-to:#FEFBF5">
+  <img src="banda1.jpg" alt="Sandra y Faustino" loading="lazy" style="object-position:center 15%">
+  <div class="foto-band-overlay"></div>
+  <div class="foto-band-caption">Juntos por siempre</div>
+</div>
+
 <!-- ═══════════════ 3. UBICACIONES ═══════════════════ -->
 <section id="location">
 
@@ -1086,6 +1135,13 @@ section.has-sec-waves{padding-top:84px;padding-bottom:86px}
 </section>
 
 
+<!-- FOTO BAND 2 -->
+<div class="foto-band" style="--fb-from:#FEFBF5;--fb-to:#FEFBF5">
+  <img src="banda2.jpg" alt="Sandra y Faustino" loading="lazy" style="object-position:center 20%">
+  <div class="foto-band-overlay"></div>
+  <div class="foto-band-caption">Nuestro amor</div>
+</div>
+
 <!-- ═══════════════ 8. FAMILIA ════════════════════════ -->
 <section id="family">
   <img class="fam-bg" src="fondo-familia.jpg" alt="" loading="lazy">
@@ -1202,6 +1258,13 @@ section.has-sec-waves{padding-top:84px;padding-bottom:86px}
   </div>
 </section>
 
+
+<!-- FOTO BAND 3 -->
+<div class="foto-band" style="--fb-from:#FEFBF5;--fb-to:#FEFBF5">
+  <img src="banda3.jpg" alt="Sandra y Faustino" loading="lazy" style="object-position:center 0%">
+  <div class="foto-band-overlay"></div>
+  <div class="foto-band-caption">Por siempre nosotros</div>
+</div>
 
 <!-- ═══════════════ 10. RSVP ════════════════════════ -->
 <section id="rsvp">
@@ -1976,6 +2039,15 @@ function ambientWind() {
     document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && lb.classList.contains('is-open')) closeLb(); });
   }
 })();
+
+/* foto-band parallax zoom */
+document.querySelectorAll('.foto-band').forEach(function(band){
+  ScrollTrigger.create({
+    trigger:band,start:'top 90%',end:'bottom 10%',
+    onEnter:function(){band.classList.add('is-visible')},
+    onLeaveBack:function(){band.classList.remove('is-visible')}
+  });
+});
 </script>
 </body>
 </html>
